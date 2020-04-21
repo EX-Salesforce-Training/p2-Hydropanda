@@ -1,0 +1,4 @@
+<aura:component>
+    <aura:attribute name="hasPrevious" type="boolean" default="true"/>
+    <aura:attribute name="hasNext" type="boolean" default="false"/>
+</aura:component>	

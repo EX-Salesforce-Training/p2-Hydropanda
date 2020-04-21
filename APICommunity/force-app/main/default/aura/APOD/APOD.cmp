@@ -1,0 +1,18 @@
+<aura:component controller="APODGetter" implements="force:appHostable, flexipage:availableForAllPageTypes, forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="apod" type="APOD__c" default="{Name : '', Date__c : '', Description__c : '', Copyright__c : '', URL__c : '', HD_URL__c : ''}"/>
+    <aura:attribute name="id" type="Id"/>
+    <aura:attribute name="hd" type="boolean" default="true"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <force:recordData aura:id="service" targetFields="{!v.apod}" recordId="{!v.id}" recordUpdated="{!c.onRecordUpdated}"/>
+    <lightning:layout>
+        <lightning:layoutItem size="10">
+            <c:APODDisplay url="{!v.hd ? v.apod.HD_URL__c : v.apod.URL__c}"/>
+            <c:APODNavigation/>
+            <c:APODDetails/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="2">
+            <c:APODUserLists/>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

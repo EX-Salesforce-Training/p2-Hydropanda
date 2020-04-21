@@ -1,0 +1,7 @@
+<aura:component>
+    <aura:attribute name="url" type="string"/>
+
+    <lightning:card>
+        <img src="{!v.url}" alt="Astronomic Picture of the Day"/>
+    </lightning:card>
+</aura:component>	
