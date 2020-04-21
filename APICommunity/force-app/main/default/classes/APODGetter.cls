@@ -5,10 +5,10 @@ public class APODGetter {
     }
     @AuraEnabled
     public static APOD__c getAPOD(Date targetDate) {
-        APOD__c apod = [SELECT Name, Date__c, Description__c, Copyright__c, URL__c, HD_URL__c FROM APOD__c WHERE Date__c =: targetDate LIMIT 1];
-        if (apod == null)
-            apod = cacheNewAPOD(targetDate);
-        return apod;
+        List<APOD__c> apod = [SELECT Name, Date__c, Description__c, Copyright__c, URL__c, HD_URL__c FROM APOD__c WHERE Date__c =: targetDate LIMIT 1];
+        if (apod.isEmpty())
+            apod.add(cacheNewAPOD(targetDate));
+        return apod[0];
     }
     public static APOD__c cacheNewAPOD(Date targetDate) {
         String apiURL = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&hd=true&date='
@@ -30,8 +30,10 @@ public class APODGetter {
                     System.enqueueJob(new APODGetterAsync(targetDate));
         } else {
             Map<String, Object> attrs = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+            if (!attrs.containsKey('copyright'))
+                attrs.put('copyright', 'N/A');
             apod = new APOD__c(Name = (String) attrs.get('title'), Date__c = targetDate, Copyright__c = (String) attrs.get('copyright'),
-            Description__c = (String) attrs.get('explanation'), URL__c = (String) attrs.get('url'), HD_URL__c = (String) attrs.get('hdurl'));
+                Description__c = (String) attrs.get('explanation'), URL__c = (String) attrs.get('url'), HD_URL__c = (String) attrs.get('hdurl'));
             insert apod;
         }
         return apod;
