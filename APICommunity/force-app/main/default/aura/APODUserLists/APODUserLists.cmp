@@ -1,3 +1,25 @@
 <aura:component>
+    <aura:attribute name="recent" type="String[]"/>
+    <aura:attribute name="favorite" type="String[]"/>
 
+    <aura:method name="onNav" action="{!c.onNav}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div class="slds-box black slds-theme_offline">
+        <h1><center><u>Recent</u></center></h1>
+        <ol><!--
+            <aura:iteration>
+                <li></li>
+            </aura:iteration>
+            -->
+        </ol>
+        <br/>
+        <h1><center><u>Favorite</u></center></h1>
+        <ul>
+            <!--
+            <aura:iteration>
+                <li></li>
+            </aura:iteration>
+            -->
+        </ul>
+    </div>
 </aura:component>	

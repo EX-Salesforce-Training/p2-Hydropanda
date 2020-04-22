@@ -1,7 +1,7 @@
 <aura:component>
     <aura:attribute name="url" type="string"/>
 
-    <lightning:card>
+    <div class="slds-box black">
         <img src="{!v.url}" alt="Astronomic Picture of the Day"/>
-    </lightning:card>
+    </div>
 </aura:component>	

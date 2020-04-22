@@ -1,4 +1,21 @@
 <aura:component>
     <aura:attribute name="hasPrevious" type="boolean" default="true"/>
     <aura:attribute name="hasNext" type="boolean" default="false"/>
+    <aura:attribute name="favorited" type="boolean"/>
+    <aura:attribute name="date" type="string"/>
+    <aura:attribute name="today" type="string"/>
+
+    <aura:registerEvent name="nav" type="c:APODNavButtonClicked"/>
+    <aura:handler name="change" value="{!v.date}" action="{!c.checkBounds}"/>
+    <div class="slds-box black slds-m-around_medium slds-align_absolute-center">
+        <lightning:buttonIconStateful iconName="utility:bookmark" variant="border-inverse" selected="{!v.favorited}" onclick="{!c.favorite}" alternativeText="Favorite" title="Favorite"/>
+        <span class="slds-m-left--small"/>
+        <lightning:buttonIcon aura:id="First" iconName="utility:skip_back" variant="bare" disabled="{!!v.hasPrevious}" onclick="{!c.onNavButton}" alternativeText="First" title="First"/>
+        <lightning:buttonIcon aura:id="Previous" iconName="utility:chevronleft" variant="bare" disabled="{!!v.hasPrevious}" onclick="{!c.onNavButton}" alternativeText="Previous" title="Previous"/>
+        <lightning:buttonIcon aura:id="Random" iconName="utility:world" variant="bare" onclick="{!c.onNavButton}" alternativeText="Random" title="Random"/>
+        <lightning:buttonIcon aura:id="Next" iconName="utility:chevronright" variant="bare" disabled="{!!v.hasNext}" onclick="{!c.onNavButton}" alternativeText="Next" title="Next"/>
+        <lightning:buttonIcon aura:id="Last" iconName="utility:skip_forward" variant="bare" disabled="{!!v.hasNext}" onclick="{!c.onNavButton}" alternativeText="Last" title="Last"/>
+        <span class="slds-m-left--xx-large"/>
+        <lightning:input type="date" label="Pick a Date to grab the APOD from." value="{!v.date}" min="1995-06-16" max="{!v.today}" onchange="{!c.onNavButton}"/>
+    </div>
 </aura:component>	

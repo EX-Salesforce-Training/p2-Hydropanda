@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Event template">
+    <aura:attribute name="button" type="string"/>
+    <aura:attribute name="favorited" type="boolean"/>
+</aura:event>

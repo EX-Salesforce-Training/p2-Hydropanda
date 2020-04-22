@@ -44,7 +44,8 @@ public class APODGetterTest {
         System.assertEquals('https://apod.nasa.gov/apod/image/2004/EyeOnMW_Claro_960.jpg', today.URL__c);
         System.assertEquals('https://apod.nasa.gov/apod/image/2004/EyeOnMW_Claro_1380.jpg', today.HD_URL__c);
 
-        APOD__c Y2K = APODGetter.getAPOD(Date.newInstance(2000, 1, 1));
+        // APOD__c Y2K = APODGetter.getAPOD(Date.newInstance(2000, 1, 1));
+        APOD__c Y2K = APODGetter.getAPODDate('2000-1-1');
         System.assertEquals('N/A', Y2K.Copyright__c);
         System.assertEquals('The Millennium that Defines Universe', Y2K.Name);
         System.assertEquals('https://apod.nasa.gov/apod/image/0001/flammarion_halfcolor_big.gif', Y2K.URL__c);
