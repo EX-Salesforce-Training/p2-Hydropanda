@@ -5,6 +5,7 @@
     <aura:attribute name="date" type="string"/>
     <aura:attribute name="today" type="string"/>
 
+    <aura:registerEvent name="favorite" type="c:APODFavorited"/>
     <aura:registerEvent name="nav" type="c:APODNavButtonClicked"/>
     <aura:handler name="change" value="{!v.date}" action="{!c.checkBounds}"/>
     <div class="slds-box black slds-m-around_medium slds-align_absolute-center">

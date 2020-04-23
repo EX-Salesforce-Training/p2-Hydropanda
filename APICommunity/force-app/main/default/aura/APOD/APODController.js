@@ -2,7 +2,7 @@
     doInit : function(component, event, helper) {
         helper.getTodayAPOD(component);
     }, 
-    onNavButton : function(component, event, helper) {
+    onNav : function(component, event, helper) {
         switch (event.getParam("button")) {
             case 'Random': helper.getRandomAPOD(component); break;
             case 'Previous': helper.getPreviousAPOD(component, component.get("v.apod").Date__c); break;
@@ -11,6 +11,11 @@
             case 'Last' : helper.getTodayAPOD(component); break;
             default: helper.getAPODDate(component, event.getParam("button"));
         }
-        component.find("lists").onNav({"favorited" : event.getParam("favorited"), "date" : component.get("v.apod").Date__c});
+    },
+    onFav : function(component, event, helper) {
+        component.find("lists").onFav(event.getParam("favorited"), component.get("v.apod").Date__c);
+    },
+    isFav : function(component, event, helper) {
+        component.set("v.favorite", event.getParam("favorite"));
     }
 })
