@@ -3,8 +3,10 @@
         var method = component.get("c.pullFavorites");
         method.setParam("userId", $A.get("$SObjectType.CurrentUser.Id"));
         method.setCallback(this, function(response) {
-            var favorite = response.getReturnValue().split(", ");
-            component.set("v.favorite", favorite);
+            if (response.getReturnValue()) {
+                var favorite = response.getReturnValue().split(", ");
+                component.set("v.favorite", favorite);
+            }
         });
         $A.enqueueAction(method);
     },

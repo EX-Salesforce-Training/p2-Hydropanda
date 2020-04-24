@@ -12,6 +12,13 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "48.0",
     "packageAliases": {
-        "spacestationyou": "0Ho4R0000004C9mSAE"
+        "spacestationyou": "0Ho4R0000004C9mSAE",
+        "spacestationyou@0.1.0-1": "04t4R000001hgs3QAA",
+        "spacestationyou@0.1.0-2": "04t4R000001hgswQAA",
+        "spacestationyou@0.1.0-3": "04t4R000001hgt6QAA",
+        "spacestationyou@0.1.0-4": "04t4R000001hgtBQAQ",
+        "spacestationyou@0.1.0-5": "04t4R000001hgtGQAQ",
+        "spacestationyou@0.1.0-6": "04t4R000001hgtLQAQ",
+        "spacestationyou@0.1.0-7": "04t4R000001hgtQQAQ"
     }
 }

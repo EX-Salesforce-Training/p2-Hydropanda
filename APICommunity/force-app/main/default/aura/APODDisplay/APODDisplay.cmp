@@ -1,7 +1,18 @@
 <aura:component>
     <aura:attribute name="url" type="string"/>
+    <aura:attribute name="hdurl" type="string"/>
+    <aura:attribute name="isImg" type="boolean"/>
 
-    <div class="slds-box black">
-        <img src="{!v.url}" alt="Astronomic Picture of the Day"/>
+    <aura:handler name="change" value="{!v.url}" action="{!c.checkUrl}"/>
+    <div class="slds-box black slds-align_absolute-center">
+        <aura:if isTrue="{!v.isImg}">
+            <a href="{!v.hdurl}" target="_blank">
+                <img src="{!v.url}" alt="Astronomic Picture of the Day" title="Click for full size"/></a>
+            <aura:set attribute="else">
+                <div class="slds-theme_offline">
+                    <a href="{!v.url}" target="_blank">Not an Image. Click here to view.</a>
+                </div>
+            </aura:set>
+        </aura:if>
     </div>
 </aura:component>	

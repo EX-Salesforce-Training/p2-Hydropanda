@@ -2,7 +2,6 @@
     <aura:attribute name="apod" type="APOD__c" default="{Name : '', Date__c : '', Description__c : '', Copyright__c : '', URL__c : '', HD_URL__c : ''}"/>
     <aura:attribute name="favorite" type="boolean"/>
     <aura:attribute name="id" type="Id"/>
-    <aura:attribute name="hd" type="boolean" default="true"/>
 
     <aura:handler name="nav" event="c:APODNavButtonClicked" action="{!c.onNav}"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
@@ -11,7 +10,7 @@
     <force:recordData aura:id="service" targetFields="{!v.apod}" recordId="{!v.id}"/>
     <lightning:layout>
         <lightning:layoutItem size="10">
-            <c:APODDisplay url="{!v.hd ? v.apod.HD_URL__c : v.apod.URL__c}"/>
+            <c:APODDisplay hdurl="{!v.apod.HD_URL__c}" url="{!v.apod.URL__c}"/>
             <c:APODNavigation aura:id="nav" favorited="{!v.favorite}" date="{!v.apod.Date__c}"/>
             <c:APODDetails apod="{!v.apod}"/>
         </lightning:layoutItem>
