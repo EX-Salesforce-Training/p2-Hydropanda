@@ -1,0 +1,22 @@
+<aura:component>
+    <aura:attribute name="apod" type="APOD__c"/>
+
+    <div class="slds-box black slds-theme_offline">
+        <center>
+            <header>
+                <h1>{!v.apod.Date__c}</h1>
+                <h2>{!v.apod.Name}</h2>
+            </header>
+            <body>
+                <ui:outputRichText value="{!v.apod.Description__c}"/>
+            </body>
+        </center>
+        <aura:if isTrue="{!!(v.apod.Copyright__c == 'N/A')}">
+            <footer>
+                <div class="slds-footer">
+                    <p>©{!v.apod.Copyright__c}</p>
+                </div>
+            </footer>
+        </aura:if>
+    </div>
+</aura:component>	

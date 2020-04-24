@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[Dear&nbsp;{!Lead.Name},<div>We're so glad to hear you're interested in subscribing to our monthly magazine. To continue on your journey, please visit [PLACEHOLDER URL] to input your payment information and set a recurrence period, or call our number at (555)-867-5309.</div><div>If you need any help, please visit [PLACEHOLDER URL 2], call our toll-free number at 1-800-SPACEROCKS, or submit a case from the tab on our APOD page.</div><div>Regards,</div><div>Explore Space!</div>]]></td>
+</tr>
+</table>

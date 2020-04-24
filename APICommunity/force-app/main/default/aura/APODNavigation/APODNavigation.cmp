@@ -1,0 +1,44 @@
+<aura:component>
+    <aura:attribute name="hasPrevious" type="boolean" default="true"/>
+    <aura:attribute name="hasNext" type="boolean" default="false"/>
+    <aura:attribute name="favorited" type="boolean"/>
+    <aura:attribute name="date" type="string"/>
+    <aura:attribute name="today" type="string"/>
+
+    <aura:registerEvent name="favorite" type="c:APODFavorited"/>
+    <aura:registerEvent name="nav" type="c:APODNavButtonClicked"/>
+    <aura:handler name="change" value="{!v.date}" action="{!c.checkBounds}"/>
+    <div class="slds-grid slds-box black">
+        <div class="slds-col slds-size_2-of-12 slds-align_absolute-center">
+            <lightning:buttonIconStateful iconName="utility:bookmark" variant="border-inverse" selected="{!v.favorited}" onclick="{!c.favorite}"
+                alternativeText="Favorite" title="Favorite"/>
+        </div>
+        <div class="slds-col slds-size_3-of-12"/>
+        <div class="slds-col slds-size_2-of-12 slds-align_absolute-center">
+            <aura:if isTrue="{!v.hasPrevious}">
+                <lightning:buttonIcon size="large" class="slds-size_1-of-5" aura:id="First" iconName="utility:skip_back" variant="bare-inverse" 
+                    disabled="{!!v.hasPrevious}" onclick="{!c.onNavButton}" alternativeText="First" title="First"/>
+                <lightning:buttonIcon size="large" class="slds-size_1-of-5" aura:id="Previous" iconName="utility:chevronleft" variant="bare-inverse"
+                    disabled="{!!v.hasPrevious}" onclick="{!c.onNavButton}" alternativeText="Previous" title="Previous"/>
+                <aura:set attribute="else">
+                    <div class="slds-size_2-of-5"/>
+                </aura:set>
+            </aura:if>
+            <lightning:buttonIcon size="large" class="slds-size_1-of-5" aura:id="Random" iconName="utility:world" variant="bare-inverse"
+                onclick="{!c.onNavButton}" alternativeText="Random" title="Random"/>
+            <aura:if isTrue="{!v.hasNext}">
+                <lightning:buttonIcon size="large" class="slds-size_1-of-5" aura:id="Next" iconName="utility:chevronright" variant="bare-inverse" 
+                    disabled="{!!v.hasNext}" onclick="{!c.onNavButton}" alternativeText="Next" title="Next"/>
+                <lightning:buttonIcon size="large" class="slds-size_1-of-5" aura:id="Last" iconName="utility:skip_forward" variant="bare-inverse" 
+                    disabled="{!!v.hasNext}" onclick="{!c.onNavButton}" alternativeText="Last" title="Last"/>
+                <aura:set attribute="else">
+                    <div class="slds-size_2-of-5"/>
+                </aura:set>
+            </aura:if>
+        </div>
+        <div class="slds-col slds-size_3-of-12"/>
+        <div class="slds-col slds-size_2-of-12">
+            <lightning:input variant="label-hidden" type="date" value="{!v.date}" min="1995-06-16" max="{!v.today}" onchange="{!c.onNavButton}" labe="Pick a Date"/>
+        </div>
+    </div>
+</aura:component>	
